@@ -2,8 +2,6 @@ package com.example.hexagonale_architecture.application.services;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
@@ -11,25 +9,17 @@ import com.example.hexagonale_architecture.application.ports.in.FetchTodoUseCase
 import com.example.hexagonale_architecture.application.ports.out.TodoPersistencePort;
 import com.example.hexagonale_architecture.domain.models.Todo;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
+@RequiredArgsConstructor
 public class FetchTodoService implements FetchTodoUseCase {
 
-    @Autowired
-    @Qualifier("todoJpaPersistenceAdapter")
-    private TodoPersistencePort port;
-
-    @Autowired
-    @Qualifier("todoMongoPersistenceAdapter")
-    private TodoPersistencePort mongoPort;
+    private final TodoPersistencePort port;
 
     @Override
     public List<Todo> fetchAll() {
         return port.findAll();
-    }
-
-    @Override
-    public List<Todo> fetchMongoAll() {
-        return mongoPort.findAll();
     }
 
     @Override
@@ -40,11 +30,6 @@ public class FetchTodoService implements FetchTodoUseCase {
     @Override
     public Todo fetchById(String id) {
         return port.findById(id);
-    }
-
-    @Override
-    public Todo fetchMongoById(String id) {
-        return mongoPort.findById(id);
     }
     
 }

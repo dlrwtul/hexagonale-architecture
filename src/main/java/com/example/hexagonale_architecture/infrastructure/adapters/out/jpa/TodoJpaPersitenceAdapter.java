@@ -2,9 +2,7 @@ package com.example.hexagonale_architecture.infrastructure.adapters.out.jpa;
 
 import java.util.List;
 
-import org.springframework.context.annotation.Primary;
 import org.springframework.data.domain.Page;
-import org.springframework.stereotype.Component;
 
 import com.example.hexagonale_architecture.application.ports.out.TodoPersistencePort;
 import com.example.hexagonale_architecture.domain.models.Todo;
@@ -14,7 +12,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
-@Component("todoJpaPersistenceAdapter")
 @RequiredArgsConstructor
 public class TodoJpaPersitenceAdapter implements TodoPersistencePort {
 

@@ -32,16 +32,6 @@ public class FetchTodoController {
         return ResponseEntity.ok(useCase.fetchById(id));
     }
 
-    @GetMapping("mongo")
-    public ResponseEntity<List<Todo>> listMongo() {
-        return ResponseEntity.ok(useCase.fetchMongoAll());
-    }
-
-    @GetMapping("mongo/{id}")
-    public ResponseEntity<Todo> getOneMongo(@PathVariable String id) {
-        return ResponseEntity.ok(useCase.fetchMongoById(id));
-    }
-
     @GetMapping("search")
     public ResponseEntity<Page<Todo>> search(
         @RequestParam(required = false) String title,
