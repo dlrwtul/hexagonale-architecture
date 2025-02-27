@@ -3,10 +3,16 @@ package com.example.hexagonale_architecture.application.services;
 import org.springframework.stereotype.Service;
 
 import com.example.hexagonale_architecture.application.ports.in.TodoUseCase;
+import com.example.hexagonale_architecture.application.ports.out.TodoPersistencePort;
 import com.example.hexagonale_architecture.domain.models.Todo;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
+@RequiredArgsConstructor
 public class TodoService implements TodoUseCase {
+
+    private final TodoPersistencePort port;
     
     @Override
     public Todo create(String title, String description) {
